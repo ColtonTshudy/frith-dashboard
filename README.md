@@ -1,8 +1,8 @@
 # Frith Print Queue (and other stuff) Front End
 
 ## Linux Package Requirements
-npm: 9.2.0
-unclutter: any version
+* npm: 9.2.0
+* unclutter: any version
 
 ## How-To (Run in Chrome and configure pi settings)
 Setup Files
@@ -12,7 +12,16 @@ cd frith-queue-frontend
 git pull
 npm i
 npm run build
+```
 
+Add your Canvas API key
+* API keys are not stored in this repository, but are required to fetch the FRITH training schedule
+* To add your key, first make a new file: `./src/rsc/api_keys.json`
+* Then, copy the following to that file and fill in your API key:
+```
+{
+    "canvas": "YOUR_API_KEY_HERE"
+}
 ```
 
 Start middleware (reverse proxy program)
