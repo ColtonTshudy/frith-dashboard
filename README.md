@@ -28,20 +28,17 @@ Start middleware (reverse proxy program)
 ```
 cd src
 node middleware.js
-
 ```
 
 Start frontend
 ```
 cd frith-printqueue-frontend/dist
 python3 -m http.server 8000
-
 ```
 
 Boot chrome
 ```
 chromium-browser --kiosk http://localhost:8000
-
 ```
 
 ## How-To (Bare minimum or debugging)
@@ -50,7 +47,6 @@ cd frith-queue-frontend
 sudo apt-get install npm
 npm i
 npm run dev
-
 ```
 
 ## Other stuff
@@ -65,5 +61,4 @@ Disable screen sleeping
 xset s off
 xset -dpms s off
 set dpms 0 0 0
-
 ```
