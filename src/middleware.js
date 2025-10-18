@@ -9,6 +9,7 @@ import request from 'request'
 import cors from 'cors'
 
 import apiKeys from './rsc/api_keys.json' assert { type: "json" };
+import openHours from './rsc/openhours.json' assert { type: "json" };
 const canvas_api_key = apiKeys.canvas
 
 const app = express()
@@ -74,14 +75,8 @@ app.use('/attendance', cors(corsOptions), (req, res) => {
     })).pipe(res)
 })
 
-app.use('/open-hours', cors(corsOptions), (req, res) => {
-    const request_url = 'https://script.googleusercontent.com/macros/echo?user_content_key=QwVJIye0oHhIMO3FjoMwXrqrqqvjdVld1bR2dsO-UA--A3-X1r_YaefKW62Y391BdJmDtABJlLq-Gzn7FGPWZGWnNIi2drsfm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnPVf_-Al0YE8OXrzXVzotOgPyAlzyPAVeloKbD4TKIjhVX4EKBqa6YbMpmjvbLUG8vs2KmjEu9Wz8IKsW5Dcpq4LmsjpyXY9rw&lib=MBMmZsxNgODjHPdmBv-QF1i8iU2Jo7_id'
-    req.pipe(request(request_url, function (error, response, body) {
-        if (error !== null) {
-            console.log("ERROR: gs operating hours retrieval error")
-            res.status(400).send({ message: 'error' })
-        }
-    })).pipe(res)
+app.get('/open-hours', cors(corsOptions), (req, res) => {
+    res.json(openHours)
 })
 
 
